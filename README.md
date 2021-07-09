@@ -85,9 +85,9 @@ const showSidebar = {
 const showSidebarAC = () => {
 	return showSidebar
 }
-
+```
 или
-
+```javascript
 const REMOVE_USER = 'REMOVE_USER'
 
 const removeUserAC = (userId) => {
