@@ -35,9 +35,9 @@ Store также может:
 Store можно создать, вызвав функцию createStore. 
 ```javascript
 import { createStore } from 'redux';
-import { galleryReducer } from './reducer';
+import { appReducer } from './reducer';
 
-export const store = createStore(galleryReducer);
+export const store = createStore(appReducer); // первый и обязательный аргумент будет reducer.
 ```
 
 ## Reducer 
@@ -49,21 +49,21 @@ export const store = createStore(galleryReducer);
 Хорошей практикой является деление reducers на более компактные. Каждый reducer отвечает за свою часть состояния и его изменения. Далее rootReducer склеивает все reducers и возвращает новое состояние и передает его store. А store уже обновляет приложение. 
 
 Логика такова: 
-	Когда в reducer приходит нужный action, reducer делает копию state, обновляет эту копию новыми значениями и возвращает новый state. Если reducer не нужен данный action, то вернётся текущий state без изменений.
+	когда в reducer приходит нужный action, reducer делает копию state, обновляет эту копию новыми значениями и возвращает новый state. Если reducer не нужен данный action, то вернётся текущий state без изменений.
 ```javascript
 const initialState = {  // объект, представляющий начальное состояние.
     initialized: false
 }
 
 const appReducer = (state = initialState, action) => { 
-    switch (action.type) { 
+    switch (action.type) { // action попадает в конструкцию switch/case.
         case INITIALIZED_SUCCESS: 
             return {
                 ...state, 
-                initialized: true
+                initialized: true // при совпадении, initialized будет изменен на true.
                 } 
         default: 
-            return state
+            return state // если совпадений нет, то reducer должен вернуть прежний state.
             } 
 }
 ```
