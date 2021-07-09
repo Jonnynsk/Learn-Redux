@@ -22,7 +22,8 @@ JavaScript библиотека с открытым исходным кодом,
 
 Store также может:
 
-    подписываться и отписываться на каждое запущенное действие: store.subscribe(listener);
+    подписываться и отписываться на каждое запущенное действие: 
+    store.subscribe(listener);
 
     получать версию текущего состояния приложения: 
     store.getState();
@@ -55,11 +56,11 @@ const initialState = {  // объект, представляющий начал
 }
 
 const appReducer = (state = initialState, action) => { 
-switch (action.type) { 
-case INITIALIZED_SUCCESS: 
-return {...state, initialized: true} 
-default: 
-return state} 
+    switch (action.type) { 
+        case INITIALIZED_SUCCESS: 
+            return {...state, initialized: true} 
+        default: 
+            return state} 
 }
 ```
 
@@ -67,6 +68,8 @@ return state}
 	
     Создавая новое состояние, reducer должен основываться только на входящие аргументы, state и action.
 
-	Нельзя модифицировать текущий state. Вместо этого должно произойти неизменяемое обновление (immutable updates), копируя текущий state, и изменяя уже эту копию. 
+	Нельзя модифицировать текущий state. Вместо этого должно произойти неизменяемое обновление 
+    (immutable updates), копируя текущий state, и изменяя уже эту копию. 
     
-    Они не должны выполнять никакой асинхронной логики, вычислять случайные значения или вызывать другие побочные эффекты (side effects).
+    Они не должны выполнять никакой асинхронной логики, вычислять случайные 
+    значения или вызывать другие побочные эффекты (side effects).
