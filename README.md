@@ -13,3 +13,5 @@
 ## Basic Flow
 
 Всё глобальное состояние приложения хранится в дереве объектов внутри store. Единственный способ изменить state, создать action и  отправить его в store с помощью dispatch. Чтобы определить, как state должен обновиться в ответ на action, нужно создать чистую функцию reducer, которая вычислит новый state основываясь на старом state и action. Если состояние изменилось, то оно направляется обратно в store, а далее во view.
+
+![redux flow](https://github.com/Jonnynsk/Learn-Redux/blob/main/README-IMG/redux%20flow.png)
