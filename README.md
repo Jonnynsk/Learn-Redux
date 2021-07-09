@@ -81,7 +81,8 @@ const showSidebar = {
 const showSidebar = {
 	type: 'SHOW_SIDEBAR’
 }
-
+```
+```javascript
 const showSidebarAC = () => {
 	return showSidebar
 }
