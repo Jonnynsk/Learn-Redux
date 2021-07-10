@@ -185,9 +185,9 @@ import { rootReducer } from './rootReducer'
 export const store = createStore(rootReducer, applyMiddleware(thunk))
 ```
 
-Самые популярные middleware для включения асинхронного выполнения кода:
-*redux-thunk*
-*redux-promise*
+Самые популярные middleware для включения асинхронного выполнения кода: <br />
+*redux-thunk*<br />
+*redux-promise*<br />
 *redux-saga*
 
 ## Enhancer 
