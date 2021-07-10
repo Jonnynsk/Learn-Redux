@@ -158,3 +158,60 @@ export const rootReducer = combineReducers({ // склеивает все reduce
     users: usersReducer,
 })
 ```
+
+# React-Redux
+
+*yarn add react-redux*
+
+Этот пакет специальная прослойка между react и redux. Чтобы не общаться к redux напрямую, мы будем общаться с этой прослойкой. 
+
+## Provider 
+
+Для того, чтобы не прокидывать store в каждый компонент руками, рекомендуется обернуть всё приложение компонентой Provider и передать в качестве аргумента store. Теперь этот store будет доступен в каждой компоненте react. Т.е. provider открывает доступ к store для connect.
+
+```javascript
+import { Provider } from 'react-redux'
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+## Connect 
+
+Компонент высшего порядка, который предоставляет доступ к хранилищу redux внутри компонентов react. Т.е. некое связующее звено между React и Redux. Функция берет react компонент, как аргумент и возвращает новый компонент с данными redux store, как props. Принимает два необязательных аргумента: mapStateToProps и mapDispatchToProps. Автоматически оборачивает actions в метод store.dispatch(). Поэтому UI всегда синхронизован с состоянием.
+
+    mapStateToProps: это функция, которая принимает state в качестве параметра и возвращает объект. 
+    Определяет части состояния, которые нужно привязать к компоненту.
+
+    mapDispatchToProps: это также функция, которая принимает dispatch в качестве параметра и 
+    возвращает объект с функциями dispatch. определяет action'ы, которые нужно привязать.
+    
+```javascript
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => {
+  return {
+    count: state.count
+  }
+}
+```
+```javascript
+
+const mapDispatchToProps = dispatch => {
+  return {
+    increment: () => dispatch({ type: "INCREMENT" }),
+    decrement: () => dispatch({ type: "DECREMENT" })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+```
+Мы вызываем функцию connect(), передав две функции и react компонент, теперь мы получаем доступ к функциям store state и dispatch в качестве props reaсt компоненты. Если нам не нужен state или dispatch, то в качестве аргументов можно передать null.
+```javascript
+export default connect(null, mapDispatchToProps)(App)
+```
+
