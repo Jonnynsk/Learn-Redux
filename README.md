@@ -178,6 +178,34 @@ import { rootReducer } from './rootReducer'
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
 ```
+
+## Enhancer 
+
+Функция высшего порядка, расширяющая обычный store дополнительным функционалом. 
+
+В каком-то смысле концепт enhancer похож на концепт middleware, но на самом деле
+работает совсем по другому. Enhancer Redux больше похож на компонент
+высшего порядка в React. Enhancer — это оболочка, абстракция вокруг обычного Store делающая его более мощным. В то время как middleware — это не что иное, как плагин или деталь приложения, которую
+можно поместить «внутрь» цепочки потока данных Redux.
+
+В качестве примера Redux Enhancer предоставляет популярный инструмент
+разработчика Redux-приложения — Redux DevTools.
+
+Чтобы запустить Redux DevTools в приложении, нужно выполнить следующие шаги:
+    Установить Redux DevTools.
+    Обновить инструкцию создания Store следующим кодом.
+
+```javascript
+// store.js
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { rootReducer } from './rootReducer'
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
+```
+
 # React-Redux
 
 *yarn add react-redux*
