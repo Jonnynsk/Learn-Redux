@@ -159,6 +159,26 @@ export const rootReducer = combineReducers({ // склеивает все reduce
 })
 ```
 
+# Асинхронность в Redux
+
+## Middleware 
+
+Расширяет функционал обычного потока данных Redux, добавляя дополнительную логику между точкой после запуска action (store.dispatch(action)) и точкой перед передачей объекта action к reducer. Т.е. вклинивается в синхронный поток Redux и добавляя асинхронные операции. Чаще всего middleware используют для логирования, краш-репортов, общения с удаленным API в асинхронном виде, и даже может заблокировать action, тогда он не попадет в reducer. Может быть несколько middleware, они выстраиваются в виде цепочки, и передают между собой action, а после уже в reducer. 
+
+Чтобы внедрить middleware в приложение, нужно воспользоваться вспомогательной
+функцией *applyMiddleware* из пакета redux.
+
+```javascript
+// store.js
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { rootReducer } from './rootReducer'
+
+export const store = createStore(rootReducer, applyMiddleware(thunk))
+```
+
+Мы расширяем createStore с помощью *applyMiddleware*. Это не обязательно, но это позволит выразить асинхронные actions в удобном виде. Асинхронный middleware, типа redux-thunk или redux-promise, оборачивает метод store.dispatch() и позволяет вызывать что-то, что не является action, например, функции или Promise.
+
 # React-Redux
 
 *yarn add react-redux*
