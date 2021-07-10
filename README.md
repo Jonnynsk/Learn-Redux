@@ -202,6 +202,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 ```
 
+В Chrome DevTools появится новая вкладка Redux, отображающая детальную информацию о всём состоянии приложения, включая саму модель состояния, все
+actions, запущенные с момента загрузки приложения, и историю изменений состояния приложения на каждый запущенный action.
+
 # React-Redux
 
 *yarn add react-redux*
@@ -210,7 +213,7 @@ export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(t
 
 ## Provider 
 
-Для того, чтобы не прокидывать store в каждый компонент руками, рекомендуется обернуть всё приложение компонентой Provider и передать в качестве аргумента store. Теперь этот store будет доступен в каждой компоненте react. Т.е. provider открывает доступ к store для connect.
+Для того, чтобы не прокидывать store в каждый компонент руками, рекомендуется обернуть всё приложение компонентой Provider и передать в качестве аргумента store. Теперь этот store будет доступен в каждой компоненте react. Т.е. provider открывает доступ к store для connect. Компонент Provider использует React context API, чтобы открыть доступ к Store всему твоему приложению.
 
 ```javascript
 import { Provider } from 'react-redux'
@@ -231,14 +234,15 @@ ReactDOM.render(
     Определяет части состояния, которые нужно привязать к компоненту.
 
     mapDispatchToProps: это также функция, которая принимает dispatch в качестве параметра и 
-    возвращает объект с функциями dispatch. определяет actions, которые нужно привязать.
+    возвращает объект с функциями dispatch. Определяет actions, которые нужно привязать.
 
 ```javascript
 import { connect } from 'react-redux'
 
 const mapStateToProps = state => {
   return {
-    count: state.count
+    photos: state.photos,
+    selectedPhotoIndex: state.selectedPhotoIndex,
   }
 }
 ```
@@ -246,14 +250,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    increment: () => dispatch({ type: "INCREMENT" }),
-    decrement: () => dispatch({ type: "DECREMENT" })
+    showNextPhoto: showNextPhoto
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
-Мы вызываем функцию connect(), передав две функции и react компонент, теперь мы получаем доступ к функциям store state и dispatch в качестве props reaсt компоненты. Если нам не нужен state или dispatch, то в качестве аргументов можно передать null.
+Мы вызываем функцию connect(), передав две функции и react компонент, теперь мы получаем доступ к функциям store state и dispatch в качестве props reaсt компоненты. Если нам не нужен state или dispatch, то в качестве аргументов можно передать null или просто пропустить этот аргумент.
 ```javascript
 export default connect(null, mapDispatchToProps)(App)
 ```
