@@ -163,7 +163,7 @@ export const rootReducer = combineReducers({ // склеивает все reduce
 
 *yarn add react-redux*
 
-Этот пакет специальная прослойка между react и redux. Чтобы не общаться к redux напрямую, мы будем общаться с этой прослойкой. 
+Этот пакет - специальная прослойка между react и redux. Чтобы не общаться к redux напрямую, мы будем общаться к этой прослойке. 
 
 ## Provider 
 
@@ -188,8 +188,8 @@ ReactDOM.render(
     Определяет части состояния, которые нужно привязать к компоненту.
 
     mapDispatchToProps: это также функция, которая принимает dispatch в качестве параметра и 
-    возвращает объект с функциями dispatch. определяет action'ы, которые нужно привязать.
-    
+    возвращает объект с функциями dispatch. определяет actions, которые нужно привязать.
+
 ```javascript
 import { connect } from 'react-redux'
 
@@ -208,7 +208,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
 Мы вызываем функцию connect(), передав две функции и react компонент, теперь мы получаем доступ к функциям store state и dispatch в качестве props reaсt компоненты. Если нам не нужен state или dispatch, то в качестве аргументов можно передать null.
 ```javascript
