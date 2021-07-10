@@ -192,8 +192,9 @@ export const store = createStore(rootReducer, applyMiddleware(thunk))
 разработчика Redux-приложения — Redux DevTools.
 
 Чтобы запустить Redux DevTools в приложении, нужно выполнить следующие шаги:
-    Установить Redux DevTools.
-    Обновить инструкцию создания Store следующим кодом.
+
+Установить Redux DevTools.
+Обновить инструкцию создания Store следующим кодом.
 
 ```javascript
 // store.js
