@@ -274,7 +274,7 @@ export default connect(null, mapDispatchToProps)(App)
 
 # Redux Toolkit
 
-*npx create-react-app app-name --template redux* 
+*npx create-react-app app-name --template redux* <br>
 *yarn add @reduxjs/toolkit*
 
 Это пакет, облегчающий работу с Redux. Он был разработан для решения трех главных проблем:
