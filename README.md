@@ -304,6 +304,7 @@ export const addTask = createAction("TASK_ADD")
 export const toggleTask = createAction("TASK_TOGGLE")
 export const removeTask = createAction("TASK_REMOVE")
 ```
+В качестве параметра для функции createAction нам необходимо передать текст, который будет использоваться в качестве type.
 
 ## createSlice
 
