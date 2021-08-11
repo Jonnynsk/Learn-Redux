@@ -227,6 +227,10 @@ actions, запущенные с момента загрузки приложе�
 Для того, чтобы не прокидывать store в каждый компонент руками, рекомендуется обернуть всё приложение компонентой Provider и передать в качестве аргумента store. Теперь этот store будет доступен в каждой компоненте react. Т.е. provider открывает доступ к store для connect. Компонент Provider использует React context API, чтобы открыть доступ к Store всему твоему приложению.
 
 ```javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { store } from './app/store'
 import { Provider } from 'react-redux'
 
 ReactDOM.render(
@@ -295,7 +299,21 @@ export const store = configureStore({
   reducer: {},
 })
 ```
+Также, с помощью пакета react-redux, нам нужно обернуть всё приложение компонентой Provider и передать в качестве аргумента store.
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+```
 ## createReducer
 
 Позволяет использовать таблицу поиска (lookup table) операций для reducers случая (case reducers) вместо инструкций switch. В данном API используется библиотека immer, позволяющая напрямую изменять иммутабельный код, например, так: state.todos[3].completed = true.
