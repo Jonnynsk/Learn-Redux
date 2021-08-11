@@ -294,10 +294,14 @@ Redux Toolkit предоставляет инструменты для наст�
 Обертка для createStore, упрощающая настройку хранилища с настройками по умолчанию. Позволяет автоматически комбинировать отдельные частичные reducers (slice reducers), добавлять промежуточные слои или посредников (middlewares), по умолчанию включает redux-thunk, позволяет использовать расширение Redux DevTools (инструменты разработчика Redux).
 ```js
 // app/store.js
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+
+const rootReducer = combineReducers({
+	count: countReducer
+})
 
 export const store = configureStore({
-  reducer: {},
+  reducer: rootReducer
 })
 ```
 Теперь, с помощью пакета react-redux, нам нужно обернуть всё приложение компонентой Provider и передать в качестве аргумента store. Теперь store будет доступен в каждой компоненте react.
@@ -319,6 +323,24 @@ ReactDOM.render(
 ## createReducer
 
 Позволяет использовать таблицу поиска (lookup table) операций для reducers случая (case reducers) вместо инструкций switch. В данном API используется библиотека immer, позволяющая напрямую изменять иммутабельный код, например, так: state.todos[3].completed = true.
+
+```js
+const initialState = {
+	count: 0
+}
+
+export const increment = createAction("INCREMENT")
+export const decrement = createAction("DECREMENT")
+
+const default createReducer(initialState, {
+	[increment]: (state) => {
+		state.count = state.count + 1
+	},
+	[decrement]: (state) => {
+		state.count = state.count - 1
+	}
+})
+```
 
 ## createAction 
 
