@@ -335,8 +335,30 @@ export const removeTask = createAction("TASK_REMOVE")
 
 ## createSlice
 
-Принимает объект, содержащий reducer, название части состояния (state slice), начальное значение состояния, и автоматически генерирует частичный редуктор с соответствующими создателями и типами операции.
+Принимает объект, содержащий reducer, название части состояния (state slice), начальное значение состояния, и автоматически генерирует частичный reducer с соответствующими создателями и типами операции.
+```jsx
+const postsSlice = createSlice({
+  name: 'counter',
+  initialState: {
+  	count: 0,
+	todo: []
+  },
+  reducers: {
+    increment(state) {
+    	state.count = state.count + 1
+    },
+    decrement(state) {
+    	state.count = state.count - 1
+    },
+    addTodo(state, action) {
+    	state.todo.push(action.payload)
+    }
+  }
+})
 
+export default postsSlice.reducer
+export const {increment, decrement, addTodo} = postsSlice.action
+```
 ## createAsyncThunk
 
 Принимает тип операции и функцию, возвращающую промис, и генерирует thunk, отправляющий типы операции pending/fulfilled/rejected на основе промиса.
