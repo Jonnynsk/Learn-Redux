@@ -357,7 +357,7 @@ export const removeTask = createAction("TASK_REMOVE")
 
 ## createSlice
 
-Функция, которая принимает начальное состояние (initial state), объект с reducers, и имя слайса. Данная функция автоматически генерирует action creators и action types, которые соответствуют reducers и state.
+Функция, которая принимает имя слайса (name), начальное состояние (initialState) и объект с reducers. Данная функция автоматически генерирует action creators и action types, которые соответствуют reducers и state.
 
 ```jsx
 const postsSlice = createSlice({
@@ -380,7 +380,7 @@ const postsSlice = createSlice({
 })
 
 export default postsSlice.reducer
-export const {increment, decrement, addTodo} = postsSlice.action
+export const {increment, decrement, addTodo} = postsSlice.actions
 ```
 ## createAsyncThunk
 
