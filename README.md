@@ -357,7 +357,8 @@ export const removeTask = createAction("TASK_REMOVE")
 
 ## createSlice
 
-Принимает объект, содержащий reducer, название части состояния (state slice), начальное значение состояния, и автоматически генерирует частичный reducer с соответствующими создателями и типами операции.
+Функция, которая принимает начальное состояние (initial state), объект с reducers, и имя слайса. Данная функция автоматически генерирует action creators и action types, которые соответствуют reducers и state.
+
 ```jsx
 const postsSlice = createSlice({
   name: 'counter',
