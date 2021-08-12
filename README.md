@@ -383,4 +383,4 @@ export const {increment, decrement, addTodo} = postsSlice.action
 ```
 ## createAsyncThunk
 
-Принимает тип операции и функцию, возвращающую промис, и генерирует thunk, отправляющий типы операции pending/fulfilled/rejected на основе промиса.
+Упрощает процесс выполнения асинхронных запросов. Принимает тип операции и функцию, возвращающую промис, и генерирует thunk, отправляющий типы операции pending/fulfilled/rejected на основе промиса.
