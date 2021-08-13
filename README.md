@@ -344,7 +344,7 @@ const default createReducer(initialState, {
 
 ## createAction 
 
-Функция, котрая объединяет action creator и action type. Она принимает action type и возвращает action creator для этого типа. Action creator может быть вызван без аргументов или с payload, чтобы связаться с action. Функция имеет переопределенный метод toString(), что позволяет использовать ее вместо константы типа.
+Функция, котрая объединяет action creator и action type. Она принимает action type и возвращает action creator для этого типа. Action creator может быть вызван без аргументов или с payload, чтобы связаться с action. В качестве параметра для функции createAction нам необходимо передать текст, который будет использоваться в качестве type.
 
 ```jsx
 import { createAction } from "@reduxjs/toolkit"
