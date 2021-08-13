@@ -322,9 +322,10 @@ ReactDOM.render(
 ```
 ## createReducer
 
-Позволяет использовать таблицу поиска (lookup table) операций для reducers случая (case reducers) вместо инструкций switch. В данном API используется библиотека immer, позволяющая напрямую изменять иммутабельный код, например, так: state.todos[3].completed = true.
+Этот инструмент упрощает нам работу с созданием reducers. Первое и самое основное это то, что тут можно не переживать по поводу «мутабельности» кода, т.е. вы можете изменять state напрямую, а дальше createReducer() сделает всё за вас. createReducer() принимает 2 параметра: дефолтное состояние стора, и объект с имеющимися экшенами и колбеком.  Колбэк также принимает текущее состояние и action в качестве параметров.
 
 ```js
+// reducer.js 
 const initialState = {
 	count: 0
 }
@@ -347,6 +348,7 @@ const default createReducer(initialState, {
 Функция, котрая объединяет action creator и action type. Она принимает action type и возвращает action creator для этого типа. Action creator может быть вызван без аргументов или с payload, чтобы связаться с action. В качестве параметра для функции createAction нам необходимо передать текст, который будет использоваться в качестве type.
 
 ```jsx
+// actions.js
 import { createAction } from "@reduxjs/toolkit"
 
 export const addTask = createAction("TASK_ADD")
