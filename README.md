@@ -276,6 +276,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(App)
 export default connect(null, mapDispatchToProps)(App)
 ```
 
+## useSelector 
+
+Это аналог mapStateToProps. Хук принимает на вход селектор - метод, который принимает redux state и возвращает из него необходимые данные.
+
+## useDispatch 
+
+Замена для mapDispatchToProps, только в довольно упрощенном виде. Хук возвращает dispatch метод из редакса, с помощью которого можно диспатчить экшены.
+
 # Redux Toolkit
 
 *npx create-react-app app-name --template redux* <br>
