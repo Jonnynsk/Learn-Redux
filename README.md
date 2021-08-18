@@ -392,6 +392,11 @@ const postsSlice = createSlice({
 export default postsSlice.reducer
 export const {increment, decrement, addTodo} = postsSlice.actions
 ```
+
+## createSelector 
+
+Функция из библиотеки Reselect, переэкспортированная для простоты использования.
+
 ## createAsyncThunk
 
 Упрощает процесс выполнения асинхронных запросов. createAsyncThunk - функция, которая принимает строку action type и callback функцию, и которая должна вернуть промис.
