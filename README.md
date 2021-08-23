@@ -403,6 +403,6 @@ export const {increment, decrement, addTodo} = postsSlice.actions
 
 ## createAsyncThunk
 
-Упрощает процесс выполнения асинхронных запросов. createAsyncThunk - функция, которая принимает строку action type и callback функцию, и которая должна вернуть промис.
+Упрощает выполнение асинхронных запросов. createAsyncThunk - функция, которая принимает строку action type и callback функцию, и которая должна вернуть промис.
 
 
