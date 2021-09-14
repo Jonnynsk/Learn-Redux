@@ -306,14 +306,19 @@ Redux Toolkit предоставляет инструменты для наст�
 Обертка для createStore, упрощающая настройку хранилища с настройками по умолчанию. Позволяет автоматически комбинировать отдельные частичные reducers (slice reducers), добавлять промежуточные слои или посредников (middlewares), по умолчанию включает redux-thunk, позволяет использовать расширение Redux DevTools (инструменты разработчика Redux).
 ```js
 // app/store.js
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
-
-const rootReducer = combineReducers({
-	count: countReducer
-})
+import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
-  reducer: rootReducer
+  reducer: {
+    posts: postsReducer,
+    comments: commentsReducer,
+    users: usersReducer,
+  },
+})
+
+// Для typescript прописываем:
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 })
 ```
 Теперь, с помощью пакета react-redux, нам нужно обернуть всё приложение компонентой Provider и передать в качестве аргумента store. Теперь store будет доступен в каждой компоненте react.
