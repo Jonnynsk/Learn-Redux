@@ -305,15 +305,16 @@ Redux Toolkit предоставляет инструменты для наст�
 
 Обертка для createStore, упрощающая настройку хранилища с настройками по умолчанию. Позволяет автоматически комбинировать отдельные частичные reducers (slice reducers), добавлять промежуточные слои или посредников (middlewares), по умолчанию включает redux-thunk, позволяет использовать расширение Redux DevTools (инструменты разработчика Redux).
 ```js
-// app/store.js
-import { configureStore } from '@reduxjs/toolkit'
+import {configureStore} from "@reduxjs/toolkit"
+
+import reservationSlice from "../features/reservationSlice"
+import customerSlice from './../features/customerSlice'
 
 export const store = configureStore({
-  reducer: {
-    posts: postsReducer,
-    comments: commentsReducer,
-    users: usersReducer,
-  },
+    reducer: {
+        reservation: reservationSlice,
+        customer: customerSlice
+    }
 })
 
 // Для typescript прописываем:
