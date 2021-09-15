@@ -380,27 +380,32 @@ export const removeTask = createAction("TASK_REMOVE")
 Функция, которая принимает объект, со следующими параметрами: имя слайса (name), начальное состояние (initialState) и объект с reducers. Данная функция автоматически генерирует action creators и action types, которые соответствуют reducers и state.
 
 ```jsx
-const postsSlice = createSlice({
-  name: 'counter',
-  initialState: {
-  	count: 0,
-	todo: []
-  },
-  reducers: {
-    increment(state) {
-    	state.count = state.count + 1
-    },
-    decrement(state) {
-    	state.count = state.count - 1
-    },
-    addTodo(state, action) {
-    	state.todo.push(action.payload)
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface ReservationState {
+    value: string[]
+}
+
+const initialState: ReservationState = {
+    value: []
+}
+
+export const reservationSlice = createSlice({
+    name: 'reservation',
+    initialState,
+    reducers: {
+        addReservation: (state, action: PayloadAction<string>) => {
+            state.value.push(action.payload)
+        },
+        removeReservation: (state, action: PayloadAction<number>) => {
+            state.value.splice(action.payload, 1)
+        }
     }
-  }
 })
 
-export default postsSlice.reducer
-export const {increment, decrement, addTodo} = postsSlice.actions
+export const {addReservation, removeReservation} = reservationSlice.actions
+
+export default reservationSlice.reducer
 ```
 
 ## createSelector 
